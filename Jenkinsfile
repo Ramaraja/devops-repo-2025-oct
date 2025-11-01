@@ -1,5 +1,6 @@
 pipeline {
 
 stage {
+	step {}
 }
 }
