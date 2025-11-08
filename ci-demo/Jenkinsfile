@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Install') {
+      steps {
+        sh 'pip install --upgrade pip'
+        sh 'pip install -r requirements.txt'
+      }
+    }
+    stage('Lint') {
+      steps {
+        sh 'flake8 app tests'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'pytest --cov=app --cov-report=term-missing'
+      }
+    }
+  }
+  post {
+    success { echo "CI Passed" }
+    failure { echo "CI Failed" }
+  }
+}
