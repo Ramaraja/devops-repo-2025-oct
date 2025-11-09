@@ -10,7 +10,7 @@ todos = [
 
 @app.route("/todos", methods=["GET"])
 def get_todos():
-    return jsonify(todos), 201
+    return jsonify(todos), 200
 
 
 @app.route("/todos", methods=["POST"])
